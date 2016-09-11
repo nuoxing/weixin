@@ -1,0 +1,14 @@
+1、微信开发过程中一般先是微信服务器通过get请求到我们自己的服务器进行身份验证，就是我们的服务器要验证是微信发来的http
+请求吗？是就发送接收请求的信息
+
+2、之后微信服务器会转发用户发来的信息
+发来的信息如：
+文本消息
+ <xml>
+ <ToUserName><![CDATA[toUser]]></ToUserName>
+ <FromUserName><![CDATA[fromUser]]></FromUserName> 
+ <CreateTime>1348831860</CreateTime>
+ <MsgType><![CDATA[text]]></MsgType>
+ <Content><![CDATA[this is a test]]></Content>
+ <MsgId>1234567890123456</MsgId>
+ </xml>

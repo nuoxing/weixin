@@ -71,6 +71,7 @@ public class WechatSecurity {
 		try {
 			//从 request 中取得输入流   
 	        InputStream inputStream = request.getInputStream(); 
+	        //把xml文档解释成map
 			Map<String, String> map = MessageUtil.parseXml(inputStream);
 			String msgtype = map.get("MsgType");
 			if (MessageUtil.REQ_MESSAGE_TYPE_EVENT.equals(msgtype)) {
