@@ -66,7 +66,7 @@ public class MsgDispatcher {
     	txtmsg.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 
     	if (map.get("MsgType").equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) { // 文本消息
-    	    txtmsg.setContent("你好，这里是崔用志个人账号！");
+    	    txtmsg.setContent("你好，测试数据");
     	    //将类转换成xml
     	    return MessageUtil.textMessageToXml(txtmsg);
     	}

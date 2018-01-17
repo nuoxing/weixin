@@ -11,11 +11,11 @@ import java.util.Arrays;
  */
 public class SignUtil {
 
-	private  static String token = "";//自己在微信上设置的token
+
 	
 	//检查签名
 	public static boolean checkSignature(String signature, String timestamp, String nonce){
-		String[] arr = new String[]{token,timestamp,nonce};
+		String[] arr = new String[]{ConstantUtils.TOKEN,timestamp,nonce};
 		Arrays.sort(arr);
 		StringBuilder content = new StringBuilder();
 		for(int i=0;i<arr.length;i++){

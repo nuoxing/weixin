@@ -1,9 +1,12 @@
 package com.weixin.controller;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -49,6 +52,7 @@ public class WechatSecurity {
 			if (SignUtil.checkSignature(signature, timestamp, nonce)) {
 				PrintWriter out = response.getWriter();
 				out.print(echostr);//签名正确，成功接连
+				System.out.println("签名功能");
 				out.close();
 			} else {
 				logger.info("这里存在非法请求！");
@@ -69,6 +73,7 @@ public class WechatSecurity {
 		System.out.println("这是 post 方法！");
 		String result = "";
 		try {
+		    //getBodyMsg(request);
 			//从 request 中取得输入流   
 	        InputStream inputStream = request.getInputStream(); 
 	        //把xml文档解释成map
@@ -87,5 +92,26 @@ public class WechatSecurity {
 		} catch (Exception e) {
 			logger.error(e, e);
 		}
+	}
+	
+	private void getBodyMsg(HttpServletRequest request){
+	    try
+        {
+            InputStream inputStream = request.getInputStream();
+            StringBuilder sb = new StringBuilder();
+            BufferedInputStream bf = new BufferedInputStream(inputStream);
+            byte[] b = new byte[1024];
+            int num = bf.read(b);
+            while (num != -1){
+                sb.append(new String(b,"utf-8"));
+                num = bf.read(b);
+            }
+            System.out.println("接收的xml数据="+sb.toString());
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 	}
 }

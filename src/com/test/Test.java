@@ -13,8 +13,9 @@ import java.util.Map.Entry;
 
 import org.json.JSONException;
 
+import com.weixin.util.ConstantUtils;
+import com.weixin.util.HttpClientUtils;
 import com.weixin.util.MessageUtil;
-import com.weixin.util.TokenUtil;
 
 public class Test {
 
@@ -104,7 +105,7 @@ public class Test {
 	
 	@org.junit.Test
 	public void tokenapi() throws JSONException{
-		System.out.println(TokenUtil.getToken());
+		System.out.println(HttpClientUtils.commonGet(ConstantUtils.ACCESS_TOKEN_URL, "utf-8"));
 	}
 			
 	
