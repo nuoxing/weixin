@@ -57,9 +57,9 @@ public class MenuService
         vo2.setName("一级2");
         List<ViewMenu> listView= new ArrayList<ViewMenu>();
         ViewMenu view  = new ViewMenu();
-        view.setName("二级百度");
+        view.setName("二级welcome");
         view.setType("view");
-        view.setUrl("http://www.baidu.com");
+        view.setUrl("http://wuhuikun.6655.la/weixin/welcome.html");
         vo2.setListView(listView);
         vo2.setListView(listView);
         listView.add(view);

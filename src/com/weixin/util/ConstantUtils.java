@@ -23,14 +23,20 @@ public class ConstantUtils
     //获取access_token的链接
     public  static String ACCESS_TOKEN_URL  = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+APPID+"&secret="+SECRET+"";
     
-    //获得到的access_token
+    //获得到的access_token 有效期2小时
     public static String ACCESS_TOKEN = "";
     
     //创建菜单的链接
-    public static String CREATE_MENU_RUL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=";
+    public static String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=";
     
+    //获取jsapi_ticket 的链接 jsapi_ticket 是用于调用js sdk的凭证
+    public static String  JSAPI_TICKER_URL="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=replace&type=jsapi";
     
     public static String getCreateMenuUrl(){
-        return CREATE_MENU_RUL+ACCESS_TOKEN;
+        return CREATE_MENU_URL+ACCESS_TOKEN;
+    }
+    
+    public static String getJsapiTicketUrl(){
+        return JSAPI_TICKER_URL.replace("replace", ACCESS_TOKEN);
     }
 }

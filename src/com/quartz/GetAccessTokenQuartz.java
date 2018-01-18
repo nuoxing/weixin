@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+import com.weixin.service.JsSdkService;
 import com.weixin.util.ConstantUtils;
 import com.weixin.util.HttpClientUtils;
 
@@ -39,11 +40,17 @@ public class GetAccessTokenQuartz
                 if (json.getString("access_token") != null)
                 {
                     ConstantUtils.ACCESS_TOKEN = json.getString("access_token");
+                    
+                    //
+                    res = HttpClientUtils.commonGet(ConstantUtils.getJsapiTicketUrl(), "utf-8");
+                    json = new JSONObject(res);
+                    if (json.getString("errmsg").equals("ok")){
+                        JsSdkService.jsapi_ticket = json.getString("ticket");
+                    }
                 }
             }
             catch (JSONException e)
             {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
